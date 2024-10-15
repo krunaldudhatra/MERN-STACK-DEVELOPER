@@ -1,0 +1,5 @@
+
+ Mon Sep 30 2024 17:51:04 GMT+0530 (India Standard Time) - /api/user/register - {"name":"abc","email":"abc@gmail.com","password":"1234"}
+ Mon Sep 30 2024 17:53:14 GMT+0530 (India Standard Time) 
+ /api/user/register 
+ {"name":"abc","email":"abc@gmail.com","password":"1234"}
