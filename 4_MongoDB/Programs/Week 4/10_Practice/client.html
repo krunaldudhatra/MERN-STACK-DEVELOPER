@@ -1,0 +1,83 @@
+<!-- no need to change the prewritten code.
+complete the script tag code. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task Management App</title>
+</head>
+
+<body>
+    <div id="task-form">
+        <!-- Create a form to add new tasks -->
+        <form id="create-task-form">
+            <input type="text" id="task-text" placeholder="Enter a new task" required>
+            <button id="create-task" type="submit">Add Task</button>
+        </form>
+    </div>
+
+    <div id="task-list">
+        <!-- Tasks will be displayed here -->
+    </div>
+
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io.connect('http://localhost:3000');
+
+        // -------------------write your code here.--------------------
+        const createTaskForm = document.getElementById('create-task-form');
+        const taskText = document.getElementById('task-text');
+        const taskList = document.getElementById('task-list');
+
+        // Function to display tasks
+        const displayTask = (task) => {
+            const taskItem = document.createElement('div');
+            taskItem.id = task._id;
+            taskItem.classList.add('task-item');
+            taskItem.innerHTML = `
+                <p>${task.text}</p>
+                <button class="delete-task">Delete</button>
+            `;
+
+            // Add event listener to delete button
+            taskItem.querySelector('.delete-task').addEventListener('click', () => {
+                // Emit 'deleteTask' event when task is deleted
+                socket.emit('deleteTask', task._id);
+            });
+
+            taskList.appendChild(taskItem);
+        };
+
+        // Listen for addTask event from the server and display the new task
+        socket.on('addTask', (task) => {
+            displayTask(task);
+        });
+
+        // Listen for deleteTask event from the server and remove the task
+        socket.on('deleteTask', (taskId) => {
+            const taskItem = document.getElementById(taskId);
+            if (taskItem) {
+                taskList.removeChild(taskItem);
+            }
+        });
+
+        // Handle the form submission to create a new task
+        createTaskForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const task = {
+                text: taskText.value,
+            };
+
+            // Emit 'addTask' event to the server with the new task
+            socket.emit('addTask', task);
+
+            // Clear the input field
+            taskText.value = '';
+        });
+
+    </script>
+</body>
+
+</html>
