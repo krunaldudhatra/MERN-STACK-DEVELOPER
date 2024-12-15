@@ -1,24 +1,24 @@
 import { customErrorHandler } from "../../middlewares/errorHandler.js";
+import { likeRepo } from "../like/like.repository.js";
 import { applyJobRepo, createNewJob, findJobRepo } from "./job.repository.js";
 
 export const postJob = async (req, res, next) => {
-  // Check if the user is a 'recruiter'
-  const userRole = req.user.role; // Assuming the user's role is available in req.user
-
-  if (userRole !== 'recruiter') {
-    return next(new customErrorHandler(403, "Only recruiters can post a job"));
+  if (req.user.type !== "recruiter") {
+    return res.status(400).json({
+      success: false,
+      msg: "sorry! only recruiter is allowed to post jobs!",
+    });
   }
-
   try {
     const resp = await createNewJob(req.body);
     if (resp) {
       res.status(201).json({
         success: true,
-        msg: "Job posted successfully.",
+        msg: "job posted successfully with ",
         job_description: resp,
       });
     } else {
-      res.status(400).json({ success: false, msg: "Bad request" });
+      res.status(400).json({ success: false, msg: "bad request" });
     }
   } catch (error) {
     next(new customErrorHandler(400, error));
@@ -31,17 +31,17 @@ export const applyJob = async (req, res, next) => {
   try {
     const job_description = await findJobRepo(job_id);
     if (!job_description) {
-      return next(new customErrorHandler(400, "Job not found"));
+      return next(new customErrorHandler(400, "job not found"));
     }
     const resp = await applyJobRepo(job_id, user_id);
     if (resp) {
       res
         .status(201)
-        .json({ success: true, msg: "Job applied successfully", resp });
+        .json({ success: true, msg: "job applied successfully", resp });
     } else {
       res
         .status(400)
-        .json({ success: false, msg: "You have already applied for this job" });
+        .json({ success: false, msg: "you have already applied for this job" });
     }
   } catch (error) {
     next(new customErrorHandler(400, error));

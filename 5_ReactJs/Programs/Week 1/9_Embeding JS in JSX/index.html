@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Component</title>
+    <!-- Include all the CDNs here -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      //Create a functional Component "App".
+      //Return A heading, paragragh and ordered/unordered list
+      //Render the component on the browser
+      function App(){
+        var name ="krunal";
+        var age = 20;
+        let test =null;
+        let a;
+        let b = true;
+      return(
+      <>
+        <h2>Hello {name}</h2>
+        <p>Your age is {age}</p>
+        <p>Your age is {test}</p>
+        <p>Your age is {a}</p>
+        <p>Your age is {b}</p>
+      </>
+      );
+      }
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>

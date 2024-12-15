@@ -1,20 +1,12 @@
-// src/features/jobs/schema/application.schema.js
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-// Define the schema for job applications
 export const applyJobSchema = new mongoose.Schema({
   jobId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Job',  // Reference to the 'Job' collection
-    required: true
+    require: [true, "job id required"],
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',  // Reference to the 'User' collection
-    required: true
-  }
+    required: [true, "userId of the applicant is required"],
+  },
 });
-
-const Application = mongoose.model('Application', applyJobSchema);
-
-export default Application;

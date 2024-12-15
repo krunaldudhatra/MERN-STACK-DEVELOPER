@@ -1,30 +1,20 @@
-// src/features/jobs/schema/job.schema.js
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-// Define the schema for the job
 export const jobSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true, // Job title is mandatory
-  },
+  title: { type: String, required: [true, "Job title is required"] },
   description: {
     type: String,
-    required: true, // Job description is mandatory
+    required: [true, "Job description is required"],
   },
   company: {
     type: String,
-    required: true, // Company name is mandatory
+    required: [true, "name of the company posting this job is required"],
   },
-  salary: {
-    type: Number,
-    required: true, // Job salary is mandatory
-  },
-  applicants: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',  // Reference to the 'User' model for job applicants
-  }],
+  salary: { type: Number, required: [true, "salary for this job is required"] },
+  applicants: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
-
-const Job = mongoose.model('Job', jobSchema);
-
-export default Job;
