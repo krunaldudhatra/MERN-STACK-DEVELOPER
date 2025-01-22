@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>React App</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // const Form = () => <>
+      //   <input placeholder="Name"/>
+      //   <input placeholder="Marks"/>
+      //   <button>Submit</button>
+      //   </>;
+
+      // const Result = () => <p></p>;
+
+      // const App = () => (
+      //   <>
+      //     <Form />
+      //     <Result />
+      //   </>
+      // );
+      const Form = ({ onSubmit }) => {
+        const [name, setName] = React.useState('');
+        const [marks, setMarks] = React.useState('');
+
+        const handleSubmit = (e) => {
+          e.preventDefault(); // Prevent page refresh
+          onSubmit({ name, marks });
+          setName('');
+          setMarks('');
+        };
+
+        return (
+          <form onSubmit={handleSubmit}>
+            <input
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              placeholder="Marks"
+              type="number"
+              value={marks}
+              onChange={(e) => setMarks(e.target.value)}
+            />
+            <button type="submit">Submit</button>
+          </form>
+        );
+      };
+
+      const Result = ({ students }) => (
+        <table border='1'>
+          <thead>
+            <tr>
+              <th>Student's Name</th>
+              <th>Marks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {students.map((student, index) => (
+              <tr key={index}>
+                <td>{student.name}</td>
+                <td>{student.marks}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
+
+      const App = () => {
+        const [students, setStudents] = React.useState([]);
+
+        const handleAddStudent = (student) => {
+          setStudents((prevStudents) => [...prevStudents, student]);
+        };
+
+        return (
+          <>
+            <Form onSubmit={handleAddStudent} />
+            <br/>
+            
+            <Result students={students} />
+          </>
+        );
+      };
+
+      const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+      rootElement.render(<App />);
+    </script>
+  </body>
+</html>

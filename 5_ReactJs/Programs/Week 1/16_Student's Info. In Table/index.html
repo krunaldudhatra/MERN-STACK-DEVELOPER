@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--<link href="style.css" rel="stylesheet">-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>React App</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const App = () => {
+        let stu = [
+          { name: "google", age: 12, marks: 78 },
+          { name: "siri", age: 20, marks: 68 },
+          { name: "you", age: 50, marks: 98 /*img: pic.png*/},
+        ];
+        //<td><img src={s.img}/></td>
+        return (
+          <>
+            <h1>Student's Details</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Marks</th>
+                </tr>
+              </thead>
+              <tbody>
+               
+                {stu.map((s, index) => (
+                  <tr key={index}>
+                    <td>{s.name}</td>
+                    <td>{s.age}</td>
+                    <td>{s.marks}</td>
+                    
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        );
+      };
+
+      const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+      rootElement.render(<App />);
+    </script>
+  </body>
+</html>

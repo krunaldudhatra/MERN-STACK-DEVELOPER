@@ -1,0 +1,42 @@
+body {
+  background-color: #f7f7f7;
+  text-align: center;
+  font-family: "Arvo", serif;
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  color: #333;
+  font-size: 3rem;
+  margin-top: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.set {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0rem;
+}
+
+.drum {
+  border: none;
+  background-color: #ff6b6b;
+  color: #fff;
+  height: 100px;
+  width: 100px;
+  font-size: 3rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.drum:hover {
+  background-color: #ff4136;
+  transform: scale(1.05);
+}

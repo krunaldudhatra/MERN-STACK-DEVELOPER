@@ -1,0 +1,119 @@
+.container {
+  max-width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  color: white;
+}
+body {
+  background-color: #121212;
+}
+.posts-container {
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #f8f1f1;
+  font-style: oblique;
+}
+
+#posts {
+  margin-top: 20px;
+}
+
+.post {
+  text-align: center;
+  max-width: 500px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  margin-bottom: 20px;
+  background-color: #121212;
+  color: white;
+  border-radius: 5%/5%;
+}
+
+.post h3 {
+  margin: 0.5rem;
+  color: white;
+  text-align: center;
+}
+
+.post p {
+  margin: 0.5rem;
+  font-size: 20px;
+  color: white;
+  text-align: start;
+}
+
+.post img {
+  width: 95%;
+  margin: 1%;
+  height: auto;
+  border-radius: 2%/2%;
+}
+
+.post .info {
+  text-align: start;
+}
+
+.post button {
+  margin: 0.5rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+}
+.post button:hover {
+  background-color: #a7a7a7;
+}
+
+.post-footer {
+  margin-left: 20px;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #888;
+}
+
+.comments-container {
+  margin-top: 10px;
+  color: #666;
+}
+
+.comments-container p {
+  margin-left: 20px;
+}
+
+.sidebar {
+  margin: 1rem;
+
+  font-size: 25px;
+  background-color: #121212;
+}
+.sidebar h3 {
+  margin: 0.5rem;
+}
+
+.sidebar input[type="text"],
+.sidebar input[type="url"] {
+  width: 90%;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.sidebar button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar button[type="submit"]:hover {
+  background-color: #0056b3;
+}

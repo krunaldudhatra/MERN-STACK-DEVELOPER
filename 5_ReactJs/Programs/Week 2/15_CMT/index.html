@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>React App</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // let customers = [];
+      // const capacity = 25;
+      // let seatsLeft = 25;
+
+      // // Create form submit handler here
+
+      // const App = () => (
+      //   <div className="App" style={{ textAlign: "center" }}>
+      //     <div>
+      //       <h2>Total Capacity:{capacity} </h2>
+      //       <h2>Seats Left: {seatsLeft}</h2>
+      //     </div>
+
+      //     {/* Create a form here for the input count, name and phone number with a submit button*/}
+
+      //     <table border="1px" style={{ margin: "auto" }}>
+      //       <thead>
+      //         <tr>
+      //           <th>Count</th>
+      //           <th>Name</th>
+      //           <th>Phone</th>
+      //           <th>Check In</th>
+      //           <th>Remove Entry</th>
+      //         </tr>
+      //       </thead>
+      //       <tbody>
+      //         {/* Complete table to show records of customers */}
+      //       </tbody>
+      //       </table>
+      //   </div>
+      // );
+      const capacity = 25;
+      let seatsLeft = capacity;
+
+      const App = () => {
+        const [customers, setCustomers] = React.useState([]);
+        const [seatsLeft, setSeatsLeft] = React.useState(capacity);
+
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          const name = e.target.name.value.trim();
+          const phone = e.target.phone.value.trim();
+          const count = parseInt(e.target.count.value.trim());
+
+          if (!name || !phone || isNaN(count) || count <= 0) {
+            alert("All fields are required, and count must be a positive number.");
+            return;
+          }
+
+          if (count > seatsLeft) {
+            alert("Guest count exceeds available seats.");
+            return;
+          }
+
+          const customerExists = customers.some((c) => c.name === name);
+          if (customerExists) {
+            alert("Customer already exists.");
+            return;
+          }
+
+          const newCustomer = {
+            count,
+            name,
+            phone,
+            checkin: new Date().toLocaleString(),
+          };
+
+          setCustomers([...customers, newCustomer]);
+          setSeatsLeft(seatsLeft - count);
+
+          e.target.reset(); // Clear form fields
+        };
+
+        const handleDelete = (name) => {
+          const customerToDelete = customers.find((c) => c.name === name);
+          if (customerToDelete) {
+            setCustomers(customers.filter((c) => c.name !== name));
+            setSeatsLeft(seatsLeft + customerToDelete.count);
+          }
+        };
+
+        return (
+          <div className="App" style={{ textAlign: "center" }}>
+            <div>
+              <h2>Total Capacity: {capacity}</h2>
+              <h2>Seats Left: {seatsLeft}</h2>
+            </div>
+            <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
+              <div>
+                <input type="text" name="name" placeholder="Customer Name" />
+              </div>
+              <div>
+                <input type="text" name="phone" placeholder="Phone Number" />
+              </div>
+              <div>
+                <input type="number" name="count" placeholder="Guest Count" />
+              </div>
+              <button type="submit">Submit</button>
+            </form>
+            <table border="1px" style={{ margin: "auto", width: "80%" }}>
+              <thead>
+                <tr>
+                  <th>Count</th>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Check In</th>
+                  <th>Remove Entry</th>
+                </tr>
+              </thead>
+              <tbody>
+                {customers.map((customer, index) => (
+                  <tr key={index}>
+                    <td>{customer.count}</td>
+                    <td>{customer.name}</td>
+                    <td>{customer.phone}</td>
+                    <td>{customer.checkin}</td>
+                    <td>
+                      <button onClick={() => handleDelete(customer.name)}>Delete</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      };
+
+      const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+      rootElement.render(<App />);
+    </script>
+
+  </body>
+</html>

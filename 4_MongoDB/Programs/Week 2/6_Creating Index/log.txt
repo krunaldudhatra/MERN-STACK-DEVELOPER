@@ -153,3 +153,10 @@
  Tue Sep 12 2023 11:44:24 GMT+0530 (India Standard Time) - / - {"productID":"64f18dcd49d45aa9558bb73f","quantity":1}
  Tue Sep 12 2023 11:55:06 GMT+0530 (India Standard Time) - /api/cartItems - {"productID":"64f18dcd49d45aa9558bb73f","quantity":1}
  Tue Sep 12 2023 11:55:06 GMT+0530 (India Standard Time) - / - {"productID":"64f18dcd49d45aa9558bb73f","quantity":1}
+ Thu Jan 09 2025 22:22:59 GMT+0530 (India Standard Time) - /api/user/signup - {}
+ Thu Jan 09 2025 22:24:49 GMT+0530 (India Standard Time) - /api/user/signup - {"name":"krunal","email":"krunaldudhatra04@gmail.com","password":"525252"}
+ Thu Jan 09 2025 22:25:25 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"krunal","email":"krunaldudhatra04@gmail.com","password":"525252"}
+ Thu Jan 09 2025 22:34:15 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"krunaldudhatra04@gmail.com","password":"525252"}
+ Thu Jan 09 2025 22:35:06 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"krunal1","email":"krunaldudhatra04@gmail.com","password":"525252"}
+ Thu Jan 09 2025 22:45:23 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"trupal","email":"krunaldudhatra04@gmail.com","password":"525256"}
+ Thu Jan 09 2025 22:48:04 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"trupal","email":"krunaldudhatra4@gmail.com","password":"525256"}

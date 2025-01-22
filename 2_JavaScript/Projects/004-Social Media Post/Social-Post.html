@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="JaydattPatel" />
+    <link rel="stylesheet" href="Social-Post.css" />
+  </head>
+  <body>
+    <div
+      id="jaydattlogo"
+      style="
+        position: fixed;
+        bottom: 2%;
+        right: 3%;
+        color: red;
+        font-family: Arial, sans-serif;
+        font-weight: bolder;
+        background-color: rgba(0, 0, 0, 0);
+        z-index: 10;
+      "
+    >
+      @Jaydatt
+    </div>
+    <h1>Instagram</h1>
+    <div class="container">
+      <div class="posts-container">
+        <div id="posts"></div>
+      </div>
+      <div class="sidebar">
+        <h3>Create new Post</h3>
+        <form id="postForm">
+          <input
+            type="text"
+            id="postInput"
+            placeholder="Write the caption for your post."
+          />
+          <input
+            type="url"
+            id="imageInput"
+            placeholder="http://www.xyz.com/image.jpg"
+          />
+          <div>
+            <button type="submit" class="submit-button">Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="Social-Post.js"></script>
+  </body>
+</html>

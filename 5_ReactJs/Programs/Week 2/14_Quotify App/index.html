@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>React App</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // const quotes = [];
+
+      // const clearInputs = () => {
+      //   nameRef.current.value = "";
+      //   quoteRef.current.value = "";
+      // };
+
+      // // create handler function here
+
+      // const App = () => (
+      //   <div className="App">
+      //     <h2>Quotify</h2>
+      //     <div className="quotes">
+      //       {quotes.map((q, i) => (
+      //         <div key={i}>
+      //           <i>"{q.quote}"</i>
+      //           <b>~ {q.name}</b>
+      //         </div>
+      //       ))}
+      //     </div>
+      //   </div>
+      // );
+      const quotes = [];
+
+      const App = () => {
+        // Create refs for inputs
+        const nameRef = React.useRef(null);
+        const quoteRef = React.useRef(null);
+
+        // Handler function to add quotes
+        const handleQuote = (event) => {
+          if (event.key === "Enter") {
+            // Get values from refs
+            const name = nameRef.current.value.trim();
+            const quote = quoteRef.current.value.trim();
+
+            // Validate inputs
+            if (name && quote) {
+              // Add the new quote to the array
+              quotes.push({ name, quote });
+
+              // Clear inputs
+              nameRef.current.value = "";
+              quoteRef.current.value = "";
+
+              // Trigger re-render
+              rootElement.render(<App />);
+            }
+          }
+        };
+
+        return (
+          <div className="App">
+            <h2>Quotify</h2>
+            {/* Input fields */}
+            <div>
+              <input type="text" placeholder="Your Name" ref={nameRef} />
+              <input
+                type="text"
+                placeholder="Your Quote"
+                ref={quoteRef}
+                onKeyPress={handleQuote}
+              />
+            </div>
+
+            {/* Display quotes */}
+            <div className="quotes">
+              {quotes.map((q, i) => (
+                <div key={i}>
+                  <i>"{q.quote}"</i>
+                  <b>~ {q.name}</b>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      };
+
+      const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+      rootElement.render(<App />);
+    </script>
+  </body>
+</html>
