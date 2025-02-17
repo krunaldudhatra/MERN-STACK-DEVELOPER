@@ -6,8 +6,8 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      photos: [],   // State to store fetched photos
-      loading: false   // State to manage loading status
+      photos: [], // State to store fetched photos
+      loading: false, // State to manage loading status
     };
   }
 
@@ -37,8 +37,7 @@ export default class App extends React.Component {
           return <Image key={photo.id} photo={photo} />;
         })} */}
 
-
-{this.state.loading ? (
+        {this.state.loading ? (
           <p>Loading...</p> // Display loading message while images are being fetched
         ) : (
           <div className="image-gallery">
