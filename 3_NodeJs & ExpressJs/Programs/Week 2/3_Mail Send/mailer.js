@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport({
 //2. Configure email content
 const mailOptions = {
     from: 'krunaldudhatra04@gmail.com',
-    to: 'krunaldudhatra20@gmail.com',
+    to: '22ituos041@ddu.ac.in',
     subject: 'Welcome to NodeJS App',
     text: 'This is an email using nodemailer in NodeJS',
 };

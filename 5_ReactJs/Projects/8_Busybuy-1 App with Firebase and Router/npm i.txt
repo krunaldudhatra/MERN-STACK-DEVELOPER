@@ -1,5 +1,0 @@
-npm i
-npm i firebase
-npm i react-router-dom
-npm i react-spinners
-npm i react-toastify

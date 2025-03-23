@@ -7,6 +7,7 @@ const server = express();
 // create an instance of ProductController
 const productController = new ProductController(); 
 server.get('/', (productController.getProducts));
+// if you write use above get then controler won't execute static file execute
 server.use(express.static('src/views'));
     // return res.send('Welcome to Inventory App');
     //Serves static files (like HTML, CSS, JavaScript, images, etc.) from a specified directory. It's used to serve many static assets without defining specific routes for each file.
