@@ -15,7 +15,7 @@ export default class productController {
     const results = productModel.searchResult(name);
    
       res.render("searchResults", { products: results });
-   
+    
     }
   };
 

@@ -76,7 +76,7 @@ export default class ProductModel {
       }
       else{
         // 3. Check if user rating is already available.
-        const existingRatingIndex = product.rating.findIndex(
+        const existingRatingIndex = product.ratings.findIndex(
           (r) => r.userID == userID
         );
         if(existingRatingIndex >= 0){

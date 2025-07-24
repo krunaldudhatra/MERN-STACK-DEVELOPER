@@ -50,4 +50,4 @@ console.log(Number.MAX_VALUE*10);
 let num3 = Infinity
 
 console.log(12/0);
-console.log(188/infinity);
+console.log(188/num3);

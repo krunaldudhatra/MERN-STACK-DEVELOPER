@@ -11,7 +11,7 @@ function main(email) {
     let hasValidLength = email.length > dotIndex + 1;
 
     if (hasAt && hasDot && has3CharsBeforeAt && hasValidLength) {
-        result = email "is valid";
+        result = "email is valid";
     } else {
         result = "invalid email";
     }
